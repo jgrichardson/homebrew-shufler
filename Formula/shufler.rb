@@ -22,7 +22,8 @@ class Shufler < Formula
   # (watchfiles, uvloop, pydantic-core) lack the Mach-O header padding that pass needs.
   def install
     (libexec/"src").install Dir["*"]
-    bin.install_symlink libexec/"venv/bin/shufler"
+    # a real launcher, not a symlink: the venv only exists after post_install, and Homebrew prunes dangling links
+    (bin/"shufler").write_env_script libexec/"venv/bin/shufler", {}
   end
 
   def post_install
