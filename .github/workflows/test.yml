@@ -1,0 +1,17 @@
+name: test
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  install:
+    runs-on: macos-latest
+    steps:
+      - name: Install from the tap
+        run: brew install jgrichardson/shufler/shufler
+      - name: Formula test
+        run: brew test jgrichardson/shufler/shufler
+      - name: Run it
+        run: shufler version
