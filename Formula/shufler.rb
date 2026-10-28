@@ -38,8 +38,10 @@ class Shufler < Formula
     <<~EOS
       Shufler reads pull requests through the GitHub CLI: brew install gh, then gh auth login.
 
-      Pick your terminal (cmux, iTerm2 or tmux) and write ~/.config/shufler/config.toml:
+      Pick your terminal (cmux, iTerm2, tmux or none) and write ~/.config/shufler/config.toml:
         shufler setup
+      To see pull requests, set your repo under [scm] in that file:
+        repo = "owner/name"
       Then start the daemon and open http://127.0.0.1:4700:
         shufler start
       Or run it at login with `brew services start shufler`. With cmux, start it from a shell inside a cmux
